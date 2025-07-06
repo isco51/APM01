@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APT | Insights on Performance & Team Dynamics</title>
+    
+    <!-- Premium Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================= */
+        /* ---      VIP Professional Design System     --- */
+        /* ============================================= */
+        
+        :root {
+            /* Light Mode (Default) */
+            --bg-color: #f8f9fa;
+            --surface-color: #ffffff;
+            --text-color: #212529;
+            --heading-color: #1a202c;
+            --accent-color: #20c997; /* A sophisticated teal */
+            --border-color: #e9ecef;
+            --shadow-color: rgba(0, 0, 0, 0.05);
+        }
+
+        [data-theme="dark"] {
+            /* Dark Mode Palette */
+            --bg-color: #1a202c;
+            --surface-color: #2d3748;
+            --text-color: #e2e8f0;
+            --heading-color: #ffffff;
+            --accent-color: #4fd1c5;
+            --border-color: #4a5568;
+            --shadow-color: rgba(0, 0,0, 0.2);
+        }
+
+        /* --- Base Styles --- */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-size: 16px;
+            line-height: 1.7;
+            margin: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--heading-color);
+        }
+
+        /* --- Header & Navigation --- */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--surface-color);
+            box-shadow: 0 2px 10px var(--shadow-color);
+            z-index: 1000;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .main-nav ul {
+            margin: 0; padding: 0; list-style: none; display: flex;
+        }
+        .main-nav li { margin-left: 40px; }
+        .main-nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            padding-bottom: 5px;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+        .main-nav a:hover { color: var(--accent-color); }
+        .main-nav a::after {
+            content: ''; position: absolute; bottom: 0; left: 0;
+            width: 0; height: 2px; background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        .main-nav a:hover::after { width: 100%; }
+        
+        /* --- Dark Mode Toggle --- */
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+            margin-left: 40px;
+        }
+        .theme-switch {
+            display: inline-block;
+            height: 24px;
+            position: relative;
+            width: 44px;
+        }
+        .theme-switch input { display: none; }
+        .slider {
+            background-color: #ccc;
+            bottom: 0; left: 0; right: 0; top: 0;
+            position: absolute;
+            cursor: pointer;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            background-color: #fff;
+            bottom: 4px; left: 4px;
+            content: "";
+            height: 16px; width: 16px;
+            position: absolute;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider { background-color: var(--accent-color); }
+        input:checked + .slider:before { transform: translateX(20px); }
+
+        /* --- Main Content & Pages --- */
+        main { padding-top: 85px; }
+        .page { display: none; animation: fadeIn 0.5s ease-in-out; }
+        .page.active { display: block; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Featured Article Hero Section --- */
+        .featured-hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2670&auto=format&fit=crop') no-repeat center center/cover;
+            padding: 120px 0;
+            color: #fff;
+            text-align: center;
+        }
+        .featured-hero h1 {
+            color: #fff;
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+        }
+        .featured-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            color: rgba(255,255,255,0.9);
+        }
+        .cta-button {
+            background-color: var(--accent-color);
+            color: var(--heading-color);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* --- Article Grid --- */
+        .latest-posts { padding: 80px 0; }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+        }
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+        .article-card {
+            background-color: var(--surface-color);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 25px var(--shadow-color);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px var(--shadow-color);
+        }
+        .article-card img {
+            width: 100%; height: 220px; object-fit: cover;
+        }
+        .article-card-content {
+            padding: 30px;
+            flex-grow: 1;
+        }
+        .article-card h3 {
+            margin-top: 0; font-size: 1.5rem;
+        }
+        .article-card p {
+            margin-bottom: 20px; flex-grow: 1;
+        }
+        .read-more {
+            text-decoration: none;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        /* --- Generic Content Box (for About/Contact) --- */
+        .content-box {
+            background: var(--surface-color);
+            padding: 50px 70px;
+            border-radius: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 4px 25px var(--shadow-color);
+        }
+        .content-box p strong {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        /* --- Footer --- */
+        .main-footer {
+            background-color: var(--surface-color);
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 60px;
+            transition: all 0.3s ease;
+        }
+        .main-footer p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+        }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 768px) {
+            .main-nav { display: none; }
+            .theme-switch-wrapper { margin-left: 20px; }
+            /* Mobile menu would need more JS, keeping it simple for now */
+            .featured-hero h1 { font-size: 2.5rem; }
+            .content-box { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ======================= HEADER ======================= -->
+    <header class="main-header">
+        <div class="container nav-container">
+            <a href="#" class="logo" data-page="home">APT</a>
+            <div class="nav-menu">
+                <nav class="main-nav" id="main-nav">
+                    <ul>
+                        <li><a data-page="home">Home</a></li>
+                        <li><a data-page="about">About</a></li>
+                        <li><a data-page="contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider"></div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ======================= MAIN CONTENT ======================= -->
+    <main>
+
+        <!-- ========= HOME PAGE ========= -->
+        <section id="home" class="page active">
+            <div class="featured-hero">
+                <div class="container">
+                    <h1>The Architecture of High-Performing Teams</h1>
+                    <p>An in-depth analysis of the structures, cultures, and technologies that enable teams to achieve extraordinary results.</p>
+                    <a href="#article1" class="cta-button" data-page="article1">Read The Feature</a>
+                </div>
+            </div>
+            <div class="latest-posts">
+                <div class="container">
+                    <h2 class="section-title">Latest Insights</h2>
+                    <div class="article-grid">
+                        
+                        <article class="article-card">
+                            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2670&auto=format&fit=crop" alt="Team collaborating on a project">
+                            <div class="article-card-content">
+                                <h3>The Collaboration Stack</h3>
+                                <p>Beyond simple chat apps. A look at the integrated tools that foster seamless, asynchronous work for modern remote teams.</p>
+                                <a href="#" class="read-more" data-page="article2">Read More &rarr;</a>
+                            </div>
+                        </article>
+
+                        <article class="article-card">
+                            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2670&auto=format&fit=crop" alt="Creative team brainstorming">
+                            <div class="article-card-content">
+                                <h3>Psychological Safety: The Bedrock of Innovation</h3>
+                                <p>Why the freedom to fail is the most critical ingredient for teams that consistently produce groundbreaking ideas and products.</p>
+                                <a href="#" class="read-more" data-page="article3">Read More &rarr;</a>
+                            </div>
+                        </article>
+
+                        <article class="article-card">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2670&auto=format&fit=crop" alt="Leader guiding a team">
+                            <div class="article-card-content">
+                                <h3>Distributed Leadership</h3>
+                                <p>Moving away from top-down management. How empowering individuals to lead within their domains creates a more resilient and agile organization.</p>
+                                <a href="#" class="read-more" data-page="article4">Read More &rarr;</a>
+                            </div>
+                        </article>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========= ABOUT PAGE ========= -->
+        <section id="about" class="page">
+            <div class="container">
+                <h2 class="section-title">About APT</h2>
+                <div class="content-box">
+                    <p><strong>APT stands for Advanced Performance Teams.</strong></p>
+                    <p>We are an independent platform and think tank dedicated to a single, vital mission: to decode the DNA of high-performing teams. In an era of unprecedented complexity, the ability to collaborate effectively is the ultimate competitive advantage.</p>
+                    <p>Our research and articles explore the intersection of leadership, technology, and culture that enables groups of individuals to achieve more than the sum of their parts. We provide insights for leaders, innovators, and anyone passionate about building the future, together.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========= CONTACT PAGE ========= -->
+        <section id="contact" class="page">
+            <div class="container">
+                <h2 class="section-title">Contact & Inquiries</h2>
+                <div class="content-box">
+                    <p>We welcome correspondence from media organizations, potential research partners, and entities interested in the strategic <strong>acquisition</strong> of this platform and its intellectual property.</p>
+                    <p>For all serious inquiries, please ensure you are reaching out through appropriate professional channels. A formal contact method is currently under development.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ========= ARTICLE PAGES (Placeholders) ========= -->
+        <!-- You would create full pages for each article here -->
+        <section id="article1" class="page">
+             <div class="container">
+                <h2 class="section-title">Article Content Here</h2>
+                <div class="content-box">
+                    <p>The full text for "The Architecture of High-Performing Teams" would go here...</p>
+                </div>
+            </div>
+        </section>
+        <section id="article2" class="page">
+             <div class="container">
+                <h2 class="section-title">Article Content Here</h2>
+                <div class="content-box">
+                    <p>The full text for "The Collaboration Stack" would go here...</p>
+                </div>
+            </div>
+        </section>
+        <!-- etc. -->
+
+    </main>
+
+    <!-- ======================= FOOTER ======================= -->
+    <footer class="main-footer">
+        <p>&copy; 2025 APT. All Rights Reserved.</p>
+        <p>Insights on Performance & Team Dynamics.</p>
+    </footer>
+
+    <!-- ======================= JAVASCRIPT ======================= -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- SPA Navigation Logic ---
+            const navLinks = document.querySelectorAll('.main-nav a, .logo, .cta-button, .read-more');
+            const pages = document.querySelectorAll('.page');
+
+            function showPage(pageId) {
+                pages.forEach(page => page.classList.remove('active'));
+                const targetPage = document.getElementById(pageId);
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                    window.scrollTo(0, 0);
+                }
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.dataset.page;
+                    if (pageId) showPage(pageId);
+                });
+            });
+
+            // --- Dark Mode Toggle Logic ---
+            const themeSwitch = document.getElementById('checkbox');
+            const currentTheme = localStorage.getItem('theme');
+
+            if (currentTheme) {
+                document.documentElement.setAttribute('data-theme', currentTheme);
+                if (currentTheme === 'dark') {
+                    themeSwitch.checked = true;
+                }
+            }
+
+            themeSwitch.addEventListener('change', function() {
+                if (this.checked) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+
+            // Show home page on initial load
+            showPage('home');
+        });
+    </script>
+
+</body>
+</html>
+
